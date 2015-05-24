@@ -3,6 +3,12 @@
 
 <head>
 
+        <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,6 +78,21 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+
+
+    <!--  Log in Section -->
+    <div id="user_nav">
+        <% if user_signed_in? %>
+            Signed in: <%= current_user.email %>.
+        </br>
+        <%= link_to ("Log out", destroy_user_session_path, :method => :delete) %>
+        <% else %>
+            <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
+        <% end %>
+    </div>
+
+
+
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -238,6 +259,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Footer -->
     <footer class="text-center">
