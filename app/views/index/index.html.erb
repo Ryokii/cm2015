@@ -6,7 +6,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
     <!--<%= javascript_include_tag :defaults %>-->
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application" %> <!-- Fixed the Log out function-->
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
 
@@ -69,22 +69,21 @@
                     <li class="page-scroll">
                         <a href="#create">Create</a>
                     </li>
-                    </li>
                     <li class="page-scroll">
                         <!--<a href="/users/sign_in">Log in</a>-->
-
                         <!--  Log in Section -->
                         <div id="user_nav">
                             <% if user_signed_in? %>
                             <!--Signed in: <%= current_user.email %>.-->
-                            </br>
+                            <li>
                             <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+                            </li>
                             <% else %>
-                            </br>
+                            <li>
                             <%= link_to "Sign in", new_user_session_path %>
+                            </li>
                             <% end %>
-                        </div>         
-
+                        </div>
                     </li>
                 </ul>
             </div>
