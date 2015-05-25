@@ -3,7 +3,7 @@
 #Hent events fra database med AngularJS
 #Og setter dem inn i et vanlig JS array
 
-var events = ['Event1','Event2','Event3','Event4','Event5'];
+var events = ["Event1","Event2","Event3","Event4","Event5"];
 events.sort();
 var eventsCount = events.length;
 
