@@ -16,7 +16,9 @@ group :development do
 end
 
 #Rails 12 factor for Heroku 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
